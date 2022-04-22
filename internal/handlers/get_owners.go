@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/MalukiMuthusi/mintbase/internal/adapters"
-	"github.com/MalukiMuthusi/mintbase/internal/models"
+	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/adapters"
+	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/models"
 	"github.com/gin-gonic/gin"
 )
 
