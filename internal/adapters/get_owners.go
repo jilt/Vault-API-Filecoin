@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/MalukiMuthusi/mintbase/internal/models"
+	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/models"
 	"github.com/MalukiMuthusi/mintbase/logger"
 )
 
