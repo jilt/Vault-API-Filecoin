@@ -10,7 +10,7 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/MalukiMuthusi/mintbase/internal/handlers"
+	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/handlers"
 	"github.com/gin-gonic/gin"
 )
 
