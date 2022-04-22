@@ -1,0 +1,63 @@
+consumes:
+  - application/json
+info:
+  description: HTTP server in Go with Swagger endpoints definition.
+  title: go-rest-api
+  version: 0.1.0
+produces:
+  - application/json
+schemes:
+  - http
+swagger: "2.0"
+
+paths:
+  /healthz:
+    get:
+      operationId: checkHealth
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK message.
+          schema:
+            type: string
+            enum:
+              - OK
+
+  /owned/{user}:
+    get:
+      description: Returns owned tokens on Mintbase
+      operationId: getOwnedByUser
+      produces:
+        - application/json
+      parameters:
+        - name: user
+          in: path
+          type: string
+          required: true
+          description: The near wallet to check for ownerships
+      responses:
+        200:
+          description: Returns the tokenIds, media and titles.
+          schema:
+            type: object
+        400:
+          description: Invalid characters in "user" were provided.
+
+  /owners/{tokenid}:
+    get:
+      description: Return the owners of an NFT.
+      operationId: getOwners
+      produces:
+        - application/json
+      parameters:
+        - name: tokenid
+          in: path
+          type: string
+          required: true
+          description: The Id of the NFT to check for owners
+      responses:
+        200:
+          description: Returns the owners of the given tokenid.
+          schema:
+            type: object

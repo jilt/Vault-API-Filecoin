@@ -1,0 +1,77 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "HTTP server in Go with Swagger endpoints definition.",
+    "version" : "0.1.0",
+    "title" : "go-rest-api"
+  },
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/healthz" : {
+      "get" : {
+        "operationId" : "checkHealth",
+        "produces" : [ "text/plain" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK message.",
+            "schema" : {
+              "type" : "string",
+              "enum" : [ "OK" ]
+            }
+          }
+        }
+      }
+    },
+    "/owned/{user}" : {
+      "get" : {
+        "description" : "Returns owned tokens on Mintbase",
+        "operationId" : "getOwnedByUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "user",
+          "in" : "path",
+          "description" : "The near wallet to check for ownerships",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Returns the tokenIds, media and titles.",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "400" : {
+            "description" : "Invalid characters in \"user\" were provided."
+          }
+        }
+      }
+    },
+    "/owners/{tokenid}" : {
+      "get" : {
+        "description" : "Return the owners of an NFT.",
+        "operationId" : "getOwners",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "tokenid",
+          "in" : "path",
+          "description" : "The Id of the NFT to check for owners",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Returns the owners of the given tokenid.",
+            "schema" : {
+              "type" : "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}
