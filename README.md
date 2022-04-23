@@ -29,4 +29,4 @@
 
 `/unlockables/{userkey}+{tokenid}`
 
-Gets unlockable content for the given NFT token id
+Gets unlockable content for the given NFT token id (click on the Varda Vault button to get the userkey for your NFT)
