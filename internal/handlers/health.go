@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/MalukiMuthusi/mintbase/internal/models"
+	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/models"
 	"github.com/gin-gonic/gin"
 )
 

@@ -48,3 +48,25 @@ type OwnedFilteredParameter struct {
 	User  string `uri:"user" binding:"required"`
 	Store string `uri:"store" binding:"required"`
 }
+
+type Nft struct {
+	Id string `json:"id"`
+
+	Metadata *Metadata `json:"metadata"`
+}
+
+type Metadata struct {
+	Title *string `json:"title"`
+
+	Media *string `json:"media"`
+
+	Description *string `json:"descripion"`
+}
+
+type Resp struct {
+	Data *Data `json:"data"`
+}
+
+type Data struct {
+	Thing []*Nft `json:"thing"`
+}

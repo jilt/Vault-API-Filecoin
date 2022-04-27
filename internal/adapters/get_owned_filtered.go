@@ -8,31 +8,27 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/MalukiMuthusi/mintbase/internal/models"
+	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/models"
+	"github.com/jilt/Vault-API-Filecoin/tree/main/logger"
 )
 
-func GetOwnedFiltered(userFiltered *models.OwnedFilteredParameter) ([]byte, error) {
+func GetOwnedFiltered(userFiltered models.OwnedFilteredParameter) (*map[string]interface{}, error) {
 	queryTemplate := `
-			{
-				thing (
-					where: {
-						tokens: {
-							ownerId: {_eq: " + {{.User}} + "}
-						},
-						store: {name: {_eq: {{.Store}}}}
-					}
-				) {
-					id,
-					metadata {
-					title,
-					media
-					}
-				}
-			}
+	query MyQuery {
+		thing(where: {tokens: {ownerId: {_eq: "{{.User}}"}}, store: {name: {_in: "{{.Store}}"}}}) {
+		  metadata {
+			id
+			title
+			media
+			description
+		  }
+		}
+	  }
 	`
 
 	tmpl, err := template.New("queryTemplate").Parse(queryTemplate)
 	if err != nil {
+		logger.Log.Info(err)
 		return nil, err
 	}
 
@@ -40,6 +36,7 @@ func GetOwnedFiltered(userFiltered *models.OwnedFilteredParameter) ([]byte, erro
 
 	err = tmpl.Execute(&b, userFiltered)
 	if err != nil {
+		logger.Log.Info(err)
 		return nil, err
 	}
 
@@ -51,11 +48,13 @@ func GetOwnedFiltered(userFiltered *models.OwnedFilteredParameter) ([]byte, erro
 
 	jsonValue, err := json.Marshal(jsonData)
 	if err != nil {
+		logger.Log.Info(err)
 		return nil, err
 	}
 
 	request, err := http.NewRequest(http.MethodPost, "https://mintbase-mainnet.hasura.app/v1/graphql", bytes.NewBuffer(jsonValue))
 	if err != nil {
+		logger.Log.Info(err)
 		return nil, err
 	}
 
@@ -63,14 +62,24 @@ func GetOwnedFiltered(userFiltered *models.OwnedFilteredParameter) ([]byte, erro
 
 	response, err := client.Do(request)
 	if err != nil {
+		logger.Log.Info(err)
 		return nil, err
 	}
 	defer response.Body.Close()
 
 	data, err := ioutil.ReadAll(response.Body)
 	if err != nil {
+		logger.Log.Info(err)
 		return nil, err
 	}
 
-	return data, nil
+	var resp map[string]interface{}
+
+	err = json.Unmarshal(data, &resp)
+	if err != nil {
+		logger.Log.Info(err)
+		return nil, err
+	}
+
+	return &resp, nil
 }

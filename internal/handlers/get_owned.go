@@ -1,20 +1,19 @@
 package handlers
 
 import (
-	"encoding/json"
 	"net/http"
 
-	"github.com/MalukiMuthusi/mintbase/internal/adapters"
-	"github.com/MalukiMuthusi/mintbase/internal/models"
+	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/adapters"
+	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/models"
 	"github.com/gin-gonic/gin"
 )
 
 type OwnedHandler struct{}
 
 func (h *OwnedHandler) Handle(c *gin.Context) {
-	var userID *models.UserIDParameter
+	var userID models.UserIDParameter
 
-	if err := c.ShouldBindUri(userID); err != nil {
+	if err := c.ShouldBindUri(&userID); err != nil {
 		e := models.BasicError{
 			Code:    models.InvalidUserIdParam.String(),
 			Message: "provide a valid user parameter",
@@ -37,5 +36,5 @@ func (h *OwnedHandler) Handle(c *gin.Context) {
 
 	// var res map[string]interface{}
 
-	json.NewEncoder(c.Writer).Encode(b)
+	c.JSON(http.StatusOK, b)
 }
