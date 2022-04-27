@@ -10,8 +10,8 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/MalukiMuthusi/mintbase/internal/handlers"
 	"github.com/gin-gonic/gin"
+	"github.com/jilt/Vault-API-Filecoin/internal/handlers"
 )
 
 func main() {
@@ -20,10 +20,9 @@ func main() {
 	var wait time.Duration
 	flag.DurationVar(&wait, "graceful-timeout", time.Second*5, "the duration for which the server gracefully wait for existing connections to finish - e.g. 15s or 1m")
 	flag.Parse()
-	
-	gin.SetMode(gin.ReleaseMode)
+
 	r := gin.New()
-	
+
 	ownedHandler := handlers.OwnedHandler{}
 	r.GET("owned/:user", ownedHandler.Handle)
 

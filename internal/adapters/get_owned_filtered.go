@@ -8,8 +8,8 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/models"
-	"github.com/jilt/Vault-API-Filecoin/tree/main/logger"
+	"github.com/jilt/Vault-API-Filecoin/internal/models"
+	"github.com/jilt/Vault-API-Filecoin/logger"
 )
 
 func GetOwnedFiltered(userFiltered models.OwnedFilteredParameter) (*map[string]interface{}, error) {

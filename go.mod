@@ -1,4 +1,4 @@
-module github.com/MalukiMuthusi/mintbase
+module github.com/jilt/Vault-API-Filecoin
 
 go 1.18
 

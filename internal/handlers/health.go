@@ -3,8 +3,8 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/models"
 	"github.com/gin-gonic/gin"
+	"github.com/jilt/Vault-API-Filecoin/internal/models"
 )
 
 type HealthHandler struct{}
