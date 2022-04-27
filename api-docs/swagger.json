@@ -28,7 +28,7 @@
     "/owned/{user}" : {
       "get" : {
         "description" : "Returns owned tokens on Mintbase",
-        "operationId" : "getOwnedByUser",
+        "operationId" : "GetOwnedByUser",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "user",
@@ -50,10 +50,40 @@
         }
       }
     },
+    "/owned/{user}/{store}" : {
+      "get" : {
+        "description" : "Returns owned tokens on Mintbase filtered by store ID",
+        "operationId" : "GetOwnedFiltered",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "user",
+          "in" : "path",
+          "description" : "The near wallet to check for ownerships",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "store",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Returns the tokenIds, media and titles filtered by the store ID.",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "400" : {
+            "description" : "Invalid characters in \"user\" were provided."
+          }
+        }
+      }
+    },
     "/owners/{tokenid}" : {
       "get" : {
         "description" : "Return the owners of an NFT.",
-        "operationId" : "getOwners",
+        "operationId" : "GetOwners",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "tokenid",
@@ -73,5 +103,18 @@
       }
     }
   },
-  "definitions" : { }
+  "definitions" : {
+    "BasicError" : {
+      "type" : "object",
+      "required" : [ "code", "message" ],
+      "properties" : {
+        "code" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
 }

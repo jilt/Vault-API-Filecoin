@@ -3,43 +3,43 @@ package adapters
 import (
 	"bytes"
 	"encoding/json"
-	"html/template"
 	"io/ioutil"
 	"net/http"
+	"text/template"
 	"time"
 
 	"github.com/MalukiMuthusi/mintbase/internal/models"
-	"github.com/MalukiMuthusi/mintbase/logger"
 )
 
-func GetOwners(tokenID *models.OwnerParameter) ([]byte, error) {
+func GetOwnedFiltered(userFiltered *models.OwnedFilteredParameter) ([]byte, error) {
 	queryTemplate := `
-	{ 
-		thing	(
-			where: {
-				id: {_eq: " + {{.TokenId}} + "}
-			}
-		) {  
-			thing {
-				tokens {
-					ownerId
+			{
+				thing (
+					where: {
+						tokens: {
+							ownerId: {_eq: " + {{.User}} + "}
+						},
+						store: {name: {_eq: {{.Store}}}}
+					}
+				) {
+					id,
+					metadata {
+					title,
+					media
+					}
 				}
 			}
-		}
-	}
-`
+	`
 
 	tmpl, err := template.New("queryTemplate").Parse(queryTemplate)
 	if err != nil {
-		logger.Log.Info(err)
 		return nil, err
 	}
 
 	var b bytes.Buffer
 
-	err = tmpl.Execute(&b, tokenID)
+	err = tmpl.Execute(&b, userFiltered)
 	if err != nil {
-		logger.Log.Info(err)
 		return nil, err
 	}
 
@@ -51,29 +51,25 @@ func GetOwners(tokenID *models.OwnerParameter) ([]byte, error) {
 
 	jsonValue, err := json.Marshal(jsonData)
 	if err != nil {
-		logger.Log.Info(err)
 		return nil, err
 	}
 
 	request, err := http.NewRequest(http.MethodPost, "https://mintbase-mainnet.hasura.app/v1/graphql", bytes.NewBuffer(jsonValue))
 	if err != nil {
-		logger.Log.Info(err)
-		return nil, models.ErrFailedFetchData
+		return nil, err
 	}
 
 	client := &http.Client{Timeout: time.Second * 100}
 
 	response, err := client.Do(request)
 	if err != nil {
-		logger.Log.Info(err)
-		return nil, models.ErrFailedFetchData
+		return nil, err
 	}
 	defer response.Body.Close()
 
 	data, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		logger.Log.Info(err)
-		return nil, models.ErrFailedFetchData
+		return nil, err
 	}
 
 	return data, nil

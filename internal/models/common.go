@@ -43,3 +43,8 @@ var (
 type CheckHealthOK struct {
 	Payload string `json:"body,omitempty"`
 }
+
+type OwnedFilteredParameter struct {
+	User  string `uri:"user" binding:"required"`
+	Store string `uri:"store" binding:"required"`
+}

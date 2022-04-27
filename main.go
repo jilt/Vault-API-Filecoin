@@ -10,7 +10,7 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/handlers"
+	"github.com/MalukiMuthusi/mintbase/internal/handlers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -28,6 +28,9 @@ func main() {
 
 	ownersHandler := handlers.OwnersHandler{}
 	r.GET("owners/:tokenid", ownersHandler.Handle)
+
+	ownedFilteredHandler := handlers.OwnedFilteredHandler{}
+	r.GET("owned/:user/:store", ownedFilteredHandler.Handle)
 
 	healthHandler := handlers.HealthHandler{}
 	r.GET("healthz", healthHandler.Handle)

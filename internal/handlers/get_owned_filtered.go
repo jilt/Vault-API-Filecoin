@@ -9,22 +9,22 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type OwnedHandler struct{}
+type OwnedFilteredHandler struct{}
 
-func (h *OwnedHandler) Handle(c *gin.Context) {
-	var userID *models.UserIDParameter
+func (h *OwnedFilteredHandler) Handle(c *gin.Context) {
+	var ownedFilteredParamete *models.OwnedFilteredParameter
 
-	if err := c.ShouldBindUri(userID); err != nil {
+	if err := c.ShouldBindUri(ownedFilteredParamete); err != nil {
 		e := models.BasicError{
 			Code:    models.InvalidUserIdParam.String(),
-			Message: "provide a valid user parameter",
+			Message: "provide a valid user and store parameter",
 		}
 
 		c.JSON(http.StatusUnprocessableEntity, e)
 		return
 	}
 
-	b, err := adapters.GetOwnedByUser(userID)
+	b, err := adapters.GetOwnedFiltered(ownedFilteredParamete)
 	if err != nil {
 		e := models.BasicError{
 			Code:    models.InvalidUserIdParam.String(),

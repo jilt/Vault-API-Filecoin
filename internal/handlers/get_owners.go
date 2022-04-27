@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/adapters"
-	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/models"
+	"github.com/MalukiMuthusi/mintbase/internal/adapters"
+	"github.com/MalukiMuthusi/mintbase/internal/models"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,7 +15,7 @@ func (h *OwnersHandler) Handle(c *gin.Context) {
 
 	var ownerParameter *models.OwnerParameter
 
-	if err := c.ShouldBind(ownerParameter); err != nil {
+	if err := c.ShouldBindUri(ownerParameter); err != nil {
 		e := models.BasicError{
 			Code:    models.InvalidTokenID.String(),
 			Message: "provide a valid token ID",

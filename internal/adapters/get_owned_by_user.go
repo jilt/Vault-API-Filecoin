@@ -8,7 +8,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/jilt/Vault-API-Filecoin/tree/main/internal/models"
+	"github.com/MalukiMuthusi/mintbase/internal/models"
 )
 
 func GetOwnedByUser(user *models.UserIDParameter) ([]byte, error) {

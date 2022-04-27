@@ -27,7 +27,7 @@ paths:
   /owned/{user}:
     get:
       description: Returns owned tokens on Mintbase
-      operationId: getOwnedByUser
+      operationId: GetOwnedByUser
       produces:
         - application/json
       parameters:
@@ -44,10 +44,36 @@ paths:
         400:
           description: Invalid characters in "user" were provided.
 
+  /owned/{user}/{store}:
+    get:
+      description: Returns owned tokens on Mintbase filtered by store ID
+      operationId: GetOwnedFiltered
+      produces:
+        - application/json
+      parameters:
+        - name: user
+          in: path
+          type: string
+          required: true
+          description: The near wallet to check for ownerships
+
+        - name: store
+          in: path
+          type: string
+          required: true
+
+      responses:
+        200:
+          description: Returns the tokenIds, media and titles filtered by the store ID.
+          schema:
+            type: object
+        400:
+          description: Invalid characters in "user" were provided.
+
   /owners/{tokenid}:
     get:
       description: Return the owners of an NFT.
-      operationId: getOwners
+      operationId: GetOwners
       produces:
         - application/json
       parameters:
@@ -61,3 +87,15 @@ paths:
           description: Returns the owners of the given tokenid.
           schema:
             type: object
+
+definitions:
+  BasicError:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string
