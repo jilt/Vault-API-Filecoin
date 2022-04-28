@@ -7,7 +7,7 @@
  
  Gets all mintbase NFTs owned by the user: id, title, image and description
  
- `https://filecoin-dlubh5ly6a-uc.a.run.app/owned/{user}+{storename}`
+ `https://filecoin-dlubh5ly6a-uc.a.run.app/owned/{user}/{store}`
   
  Gets all mintbase owned NFT within the same smart contract
  
@@ -19,7 +19,7 @@
  
  Gets all paras NFTs owned by the user: id, title, image and description
  
- `https://filecoin-dlubh5ly6a-uc.a.run.app/owned-paras/{user}+{collection}`
+ `https://filecoin-dlubh5ly6a-uc.a.run.app/owned-paras/{user}/{collection}`
   
  Gets all paras owned NFT within the same collection (not yet implemented)
  
