@@ -53,7 +53,7 @@ func main() {
 	go func() {
 
 		if err := srv.ListenAndServe(); err != nil {
-			log.Print("server listen error")
+			log.Printf("server listen error, %v", err)
 		}
 	}()
 

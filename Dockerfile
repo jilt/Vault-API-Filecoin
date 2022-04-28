@@ -14,7 +14,6 @@ COPY go.* ./
 ARG github_user
 ARG github_personal_token
 RUN apk add --no-cache git
-RUN git config --global url."https://${github_user}:${github_personal_token}@github.com".insteadOf "https://github.com"
 RUN --mount=type=cache,target=/go/pkg/mod \
     go mod download
 
@@ -52,5 +51,5 @@ COPY --from=build /out/filecoin /
 FROM bin-unix as bin
 COPY --from=base /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
-ENTRYPOINT [ "./Vault-API-Filecoin" ]
+ENTRYPOINT [ "./filecoin" ]
 EXPOSE 8080
