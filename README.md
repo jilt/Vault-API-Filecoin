@@ -21,12 +21,12 @@
  
  `https://filecoin-dlubh5ly6a-uc.a.run.app/owned-paras/{user}+{collection}`
   
- Gets all paras owned NFT within the same collection
+ Gets all paras owned NFT within the same collection (not yet implemented)
  
  `https://filecoin-dlubh5ly6a-uc.a.run.app/owners-paras/{tokenid}`
  
  Get all owners for a given NFT (each editions) on paras
 
-`https://filecoin-dlubh5ly6a-uc.a.run.app/unlockables/{userkey}+{tokenid}`
+`https://filecoin-dlubh5ly6a-uc.a.run.app/unlockables/{tokenid}`
 
-Gets unlockable content for the given NFT token id (click on the Varda Vault button to get the userkey for your NFT)
+Gets unlockable content for the given NFT token id (not yet implemented)
