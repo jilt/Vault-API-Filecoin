@@ -24,7 +24,7 @@ func (h *OwnersParasHandler) Handle(c *gin.Context) {
 		return
 	}
 
-	b, err := adapters.GetOwners(ownerParameter)
+	b, err := adapters.GetParasOwners(ownerParameter)
 	if err != nil {
 
 		var e models.BasicError

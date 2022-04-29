@@ -23,7 +23,7 @@ func (h *OwnedParasHandler) Handle(c *gin.Context) {
 		return
 	}
 
-	b, err := adapters.GetOwnedByUser(userID)
+	b, err := adapters.GetParasOwnedByUser(userID)
 	if err != nil {
 		e := models.BasicError{
 			Code:    models.InvalidUserIdParam.String(),
