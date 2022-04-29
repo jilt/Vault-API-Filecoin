@@ -727,10 +727,10 @@ margin-bottom: 20px;
                       <a href="#api-Default-getOwners">Mintbase - getOwners</a>
                     </li>
 		  	<li data-group="Default" data-name="getParasOwnedByUser" class="">
-                      <a href="#api-Default-getOwnedByUser">Paras - getOwnedByUser</a>
+                      <a href="#api-Default-getParasOwnedByUser">Paras - getParasOwnedByUser</a>
                     </li>
                     <li data-group="Default" data-name="getParasOwners" class="">
-                      <a href="#api-Default-getOwners">Paras - getOwners</a>
+                      <a href="#api-Default-getParasOwners">Paras - getParasOwners</a>
                     </li>
           </ul>
         </nav>
@@ -738,7 +738,7 @@ margin-bottom: 20px;
       <div id="content">
         <div id="project">
           <div class="pull-left">
-            <h1>go-rest-api</h1>
+            <h1>NFT Unlockable Content GoLang rest API</h1>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -1636,7 +1636,7 @@ except ApiException as e:
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Return the owners of a Mintbase NFT.</p>
+                        <p class="marked">Return the owners of a Mintbase NFT, get the TokenId on the <a href="https://vault.varda.vision" title="Varda Vault" target="_blank">Varda Vault</a>.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">https://filecoin-dlubh5ly6a-uc.a.run.app/owners/{tokenid}</span></code></pre>
@@ -1916,13 +1916,598 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
+					<div id="api-Default-getParasOwnedByUser">
+                      <article id="api-Default-getParasOwnedByUser-0" data-group="User" data-name="getParasOwnedByUser" data-version="0">
+                        <div class="pull-left">
+                          <h1>getParasOwnedByUser</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Returns owned tokens on Paras</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">https://filecoin-dlubh5ly6a-uc.a.run.app/owned-paras/{user}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-getParasOwnedByUser-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwnedByUser-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwnedByUser-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-getParasOwnedByUser-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-getParasOwnedByUser-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwnedByUser-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-getParasOwnedByUser-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-getParasOwnedByUser-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwnedByUser-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwnedByUser-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwnedByUser-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-getParasOwnedByUser-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://filecoin-dlubh5ly6a-uc.a.run.app/owned-paras/{user}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-getParasOwnedByUser-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        String user = user_example; // String | The near wallet to check for ownerships
+        try {
+            Object result = apiInstance.getParasOwnedByUser(user);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#getParasOwnedByUser");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-getParasOwnedByUser-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        String user = user_example; // String | The near wallet to check for ownerships
+        try {
+            Object result = apiInstance.getParasOwnedByUser(user);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#getParasOwnedByUser");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-getOwnedByUser-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-getParasOwnedByUser-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *user = user_example; // The near wallet to check for ownerships
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance getParasOwnedByUserWith:user
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getParasOwnedByUser-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var GoRestApi = require('go_rest_api');
+
+var api = new GoRestApi.DefaultApi()
+
+var user = user_example; // {String} The near wallet to check for ownerships
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getParasOwnedByUser(user, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-getParasOwnedByUser-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-getParasOwnedByUser-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getParasOwnedByUserExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new DefaultApi();
+            var user = user_example;  // String | The near wallet to check for ownerships
+
+            try
+            {
+                Object result = apiInstance.getParasOwnedByUser(user);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.getParasOwnedByUser: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getParasOwnedByUser-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$user = user_example; // String | The near wallet to check for ownerships
+
+try {
+    $result = $api_instance->getParasOwnedByUser($user);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getParasOwnedByUser: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getParasOwnedByUser-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $user = user_example; # String | The near wallet to check for ownerships
+
+eval { 
+    my $result = $api_instance->getParasOwnedByUser(user => $user);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->getParasOwnedByUser: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getParasOwnedByUser-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+user = user_example # String | The near wallet to check for ownerships
+
+try: 
+    api_response = api_instance.get_paras_owned_by_user(user)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->getParasOwnedByUser: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">user*</td>
+<td>
+
+
+    <div id="d2e199_getParasOwnedByUser_user">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        The near wallet to check for ownerships
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Returns the tokenIds, media and titles. </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getParasOwnedByUser-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getParasOwnedByUser-200-schema">
+                                  <div id='responses-getParasOwnedByUser-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Returns the tokenIds, media and titles.",
+  "schema" : {
+    "type" : "object"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getOwnedByUser-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getParasOwnedByUser-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getParasOwnedByUser-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Invalid characters in &quot;user&quot; were provided. </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+					  <hr>
+					<div id="api-Default-getParasOwners">
+                      <article id="api-Default-getParasOwners-0" data-group="User" data-name="getParasOwners" data-version="0">
+                        <div class="pull-left">
+                          <h1>getParasOwners</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Return the owners of a Paras NFT, get the TokenId on the <a href="https://vault.varda.vision" title="Varda Vault" target="_blank">Varda Vault</a>.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">https://filecoin-dlubh5ly6a-uc.a.run.app/owners-paras/{tokenid}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-getParasOwners-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwners-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwners-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-getParasOwners-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-getParasOwners-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwners-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-getParasOwners-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-getParasOwners-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwners-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwners-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-getParasOwners-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-getParasOwners-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://filecoin-dlubh5ly6a-uc.a.run.app/owners-paras/{tokenid}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-getParasOwners-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        String tokenid = tokenid_example; // String | The Id of the NFT to check for owners (check on the Varda Vault)
+        try {
+            Object result = apiInstance.getParasOwners(tokenid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#getParasOwners");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-getParasOwners-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        String tokenid = tokenid_example; // String | The Id of the NFT to check for owners (check on the Varda Vault)
+        try {
+            Object result = apiInstance.getParasOwners(tokenid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#getParasOwners");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-getOwners-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-getParasOwners-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *tokenid = tokenid_example; // The Id of the NFT to check for owners (check on the Varda Vault)
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance getParasOwnersWith:tokenid
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getParasOwners-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var GoRestApi = require('go_rest_api');
+
+var api = new GoRestApi.DefaultApi()
+
+var tokenid = tokenid_example; // {String} The Id of the NFT to check for owners (check the Varda Vault)
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getParasOwners(tokenid, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-getOwners-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-getParasOwners-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getParasOwnersExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new DefaultApi();
+            var tokenid = tokenid_example;  // String | The Id of the NFT to check for owners (check on the Varda Vault)
+
+            try
+            {
+                Object result = apiInstance.getParasOwners(tokenid);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.getParasOwners: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getParasOwners-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$tokenid = tokenid_example; // String | The Id of the NFT to check for owners (check on the Varda Vault)
+
+try {
+    $result = $api_instance->getParasOwners($tokenid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getParasOwners: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getParasOwners-0-perlOwners-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $tokenid = tokenid_example; # String | The Id of the NFT to check for owners (check on the Varda Vault)
+
+eval { 
+    my $result = $api_instance->getParasOwners(tokenid => $tokenid);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->getParasOwners: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getParasOwners-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+tokenid = tokenid_example # String | The Id of the NFT to check for owners (check on the Varda Vault)
+
+try: 
+    api_response = api_instance.get_paras_owners(tokenid)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->getParasOwners: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">tokenid*</td>
+<td>
+
+
+    <div id="d2e199_getParasOwners_tokenid">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        The Id of the NFT to check for owners, check the right tokenId on the Varda Vault
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Returns the owners of the given tokenid (check the tokenId on the Varda Vault). </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getParasOwners-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getParasOwners-200-schema">
+                                  <div id='responses-getParasOwners-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Returns the owners of the given tokenid check the token id on the Varda Vault.",
+  "schema" : {
+    "type" : "object"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getParasOwners-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getParasOwners-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getParasOwners-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
                   </section>
           </div>
           <div id="footer">
             <div id="api-_footer">
               <p>Suggestions, contact, support and error reporting;
-                  <div class="app-desc">Information URL: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
-                  <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+                  <div class="app-desc">Information URL: <a href="https://www.jeeltcraft.com">https://www.jeeltcraft.com</a></div>
+                  <div class="app-desc">Contact Info: <a href="jilt@jeeltcraft.com">jilt@jeeltcraft.com</a></div>
               </p>
                 <div class="license-info">All rights reserved</div>
                 <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
