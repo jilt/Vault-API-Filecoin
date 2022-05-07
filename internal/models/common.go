@@ -70,3 +70,13 @@ type Resp struct {
 type Data struct {
 	Thing []*Nft `json:"thing"`
 }
+
+type UnlockableParameter struct {
+	TokenId string `uri:"tokenid" binding:"required"`
+}
+
+type UnlockableCidJson []struct {
+	Name string `json:"name"`
+	Cid  string `json:"CID"`
+	Link string `json:"link"`
+}
