@@ -15,7 +15,6 @@ import (
 )
 
 func main() {
-
 	// Create a deadline to wait for.
 	var wait time.Duration
 	flag.DurationVar(&wait, "graceful-timeout", time.Second*5, "the duration for which the server gracefully wait for existing connections to finish - e.g. 15s or 1m")
@@ -31,7 +30,7 @@ func main() {
 
 	ownedFilteredHandler := handlers.OwnedFilteredHandler{}
 	r.GET("owned/:user/:store", ownedFilteredHandler.Handle)
-	
+
 	ownedParasHandler := handlers.OwnedParasHandler{}
 	r.GET("owned-paras/:user", ownedParasHandler.Handle)
 
@@ -40,6 +39,9 @@ func main() {
 
 	healthHandler := handlers.HealthHandler{}
 	r.GET("healthz", healthHandler.Handle)
+
+	UnlockableHandler := handlers.UnlockableHandler{}
+	r.GET("unlockable/:tokenid", UnlockableHandler.Handle)
 
 	port := os.Getenv("PORT")
 	if port == "" {
