@@ -732,6 +732,9 @@ margin-bottom: 20px;
                     <li data-group="Default" data-name="getParasOwners" class="">
                       <a href="#api-Default-getParasOwners">Paras - getParasOwners</a>
                     </li>
+					<li data-group="Default" data-name="getUnlockables" class="">
+                      <a href="#api-Default-getUnlockables"> getUnlockables</a>
+                    </li>
           </ul>
         </nav>
       </div>
@@ -745,7 +748,7 @@ margin-bottom: 20px;
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.1.1</div>
+              <div class="app-desc">Version: 0.1.2</div>
             <hr>
             <div>HTTP server in Go with Swagger endpoints definition.</div>
           </div>
@@ -2501,6 +2504,304 @@ except ApiException as e:
 
                         </article>
                       </div>
+					  <hr>
+					  <div id="api-Default-getUnlockables">
+                      <article id="api-Default-getUnlockables-0" data-group="User" data-name="getUnlockables" data-version="0">
+                        <div class="pull-left">
+                          <h1>getUnlockables</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Returns unlockable content for NFT tokenid, retrieve the tokenid in the <a href="https://vault.varda.vision" title="varda vault" target="_blank">Varda Vault</a> after locking the content.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">https://filecoin-dlubh5ly6a-uc.a.run.app/owned/{user}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-getUnlockables-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-getUnlockables-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-getUnlockables-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-getUnlockables-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-getUnlockables-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-getUnlockables-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-getUnlockables-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-getUnlockables-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-getUnlockables-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-getUnlockables-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-getUnlockables-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-getUnlockables-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://filecoin-dlubh5ly6a-uc.a.run.app/unlockables/{tokenid}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-getUnlockables-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        String tokenId = token_example // String | the token id for your Nft, check the Varda Vault to get it
+        try {
+            Object result = apiInstance.getUnlockables(tokenid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#getUnlockables");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-getUnlockables-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        String tokenId = token_example // String | the token id for your NFT, check the Varda Vault to get it
+        try {
+            Object result = apiInstance.getUnlockables(tokenid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#getUnlockables");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-getUnlockables-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-getUnlockables-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *tokenId = token_example // String | the token id for your Nft, check the Varda Vault to get it
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+[apiInstance getUnlockablesWith:tokenid
+              completionHandler: ^(Object output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getUnlockables-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var GoRestApi = require('go_rest_api');
+
+var api = new GoRestApi.DefaultApi()
+
+var tokenId = token_example // String | the token id for your NFT, check the Varda Vault to get it
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getUnlockables(tokenid, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-getUnlockables-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-getUnlockables-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getUnlockablesExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new DefaultApi();
+            var tokenId = token_example // String | the token id for your NFT, check the Varda Vault to get it
+
+            try
+            {
+                Object result = apiInstance.getUnlockables(user);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.getUnlockables: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getUnlockables-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$tokenId = token_example // String | the token id for your NFT, check the Varda Vault to get it
+
+try {
+    $result = $api_instance->getUnlockables($tokenid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getUnlockables: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getUnlockables-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $tokenId = token_example # String | the token id for your Nft, check the Varda Vault to get it
+
+eval { 
+    my $result = $api_instance->getUnlockables(tokenid => $tokenid);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->getUnlockables: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-getUnlockables-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+tokenId = token_example # String | the token id for your Nft, check the Varda Vault to get it
+
+try: 
+    api_response = api_instance.get_unlockables(tokenid)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->getUnlockables: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">tokenid*</td>
+<td>
+
+
+    <div id="d2e199_getUnlockables_tokenid">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        The tokenId of the Owned NFT to unlock files, check On the <a href="https://vault.varda.vision" title="varda vault" target="_blank">Varda Vault</a> what's your tokenID.
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Returns the CID or link for unlockable files. </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-geUnlockables-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getUnlockables-200-schema">
+                                  <div id='responses-getUnlockables-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Returns the CID or link for unlockable files, media and titles.",
+  "schema" : {
+    "type" : "object"
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getUnlockables-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getUnlockables-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getOwnedByUser-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Invalid characters in &quot;tokenid&quot; were provided. </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                   </section>
           </div>
           <div id="footer">
