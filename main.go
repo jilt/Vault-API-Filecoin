@@ -22,6 +22,9 @@ func main() {
 
 	r := gin.New()
 
+	cors := handlers.Cors{}
+	r.Use(cors.Middleware())
+
 	ownedHandler := handlers.OwnedHandler{}
 	r.GET("owned/:user", ownedHandler.Handle)
 
