@@ -12,6 +12,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/jilt/Vault-API-Filecoin/internal/handlers"
+	"github.com/jilt/Vault-API-Filecoin/internal/utils"
+	"github.com/jilt/Vault-API-Filecoin/logger"
+	"github.com/spf13/viper"
 )
 
 func main() {
@@ -94,4 +97,32 @@ func main() {
 
 	os.Exit(0)
 
+}
+
+func init() {
+	viper.AutomaticEnv()
+
+	viper.SetEnvPrefix(utils.AppName)
+
+	BindEnvs()
+
+	viper.SetDefault(utils.Port, "8080")
+
+	CheckMustBeSetEnvs()
+}
+
+func BindEnvs() {
+	viper.BindEnv(utils.Port, "PORT")
+	viper.BindEnv(utils.StorageAccessToken, "W3_STORAGE_TOKEN")
+}
+
+func EnvMustBeSet(key string) {
+	if !viper.IsSet(key) {
+
+		logger.Log.WithField(key, key).Fatalf("%v: not set", key)
+	}
+}
+
+func CheckMustBeSetEnvs() {
+	EnvMustBeSet(utils.StorageAccessToken)
 }
