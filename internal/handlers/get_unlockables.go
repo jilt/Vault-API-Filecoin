@@ -7,12 +7,13 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/ipfs/go-cid"
 	"github.com/jilt/Vault-API-Filecoin/internal/models"
+	"github.com/jilt/Vault-API-Filecoin/internal/utils"
+	"github.com/spf13/viper"
 	"github.com/web3-storage/go-w3s-client"
 )
 
@@ -46,7 +47,6 @@ func (h *UnlockableHandler) Handle(c *gin.Context) {
 	}
 
 	h.Token = unlockableParameter.TokenId
-	//h.CID = "bafybeigk7ttzgm7i3j7tsfg6ql7rv3ykaratezm63gwub6iw3vqonkm5yy"
 	h.CID = h.getLatestW3Upload(sess)
 	_, tokenMap, err := h.DownloadCidJson()
 	if err != nil {
@@ -74,7 +74,7 @@ func (h *UnlockableHandler) Handle(c *gin.Context) {
 
 func (h *UnlockableHandler) ConnectToW3Storage() (w3s.Client, error) {
 	wc, err := w3s.NewClient(
-		w3s.WithEndpoint(os.Getenv("W3_STROAGE_TOKEN")),
+		w3s.WithToken(viper.GetString(utils.StorageAccessToken)),
 	)
 	if err != nil {
 		panic(err)
@@ -126,8 +126,6 @@ func (h *UnlockableHandler) DownloadCidJson() (models.UnlockableCidJson, map[str
 	if err != nil {
 		return unlockableJson, nil, err
 	}
-
-	log.Println(unlockableJson)
 
 	for _, v := range unlockableJson {
 		tokenDataMap[v.Name] = v
