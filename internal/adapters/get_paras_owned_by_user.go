@@ -17,6 +17,12 @@ func GetParasOwnedByUser(user models.UserIDParameter) (*map[string]interface{}, 
 	// create the query
 	queryTemplate := `
 	query MyQuery {
+  tokenSearch(text: "{{.User}}") { 
+    id
+    media
+    title
+    token_series_id 
+  },
   nftBuys(where: {owner_id: "{{.User}}"}) {
     token_series_id
     token_id
