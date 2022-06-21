@@ -37,6 +37,9 @@ func main() {
 	ownedFilteredHandler := handlers.OwnedFilteredHandler{}
 	r.GET("owned/:user/:store", ownedFilteredHandler.Handle)
 
+	FmHandler := handlers.FmHandler{}
+	r.GET("fm/:tokenid", fmHandler.Handle)
+	
 	ownedParasHandler := handlers.OwnedParasHandler{}
 	r.GET("owned-paras/:user", ownedParasHandler.Handle)
 
