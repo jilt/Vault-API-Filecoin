@@ -1,5 +1,7 @@
 # Vault-API-Filecoin
- The HTTP API to get unlockable content from the Varda Vault immutable DB
+ The HTTP API to get unlockable content from the Varda Vault filecoin immutable DB
+ 
+ [Detailed docs for each coding language](https://jilt.github.io/Vault-API-Filecoin/)
  
  HTTP Endpoints for checking ownership:
  
@@ -29,4 +31,4 @@
 
 `https://filecoin-dlubh5ly6a-uc.a.run.app/unlockables/{tokenid}`
 
-Gets unlockable content for the given NFT token id (not yet implemented)
+Gets filecoin unlockable content for the given NFT token id
