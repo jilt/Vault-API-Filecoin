@@ -80,3 +80,7 @@ type UnlockableCidJson []struct {
 	Cid  string `json:"CID"`
 	Link string `json:"link"`
 }
+
+type FmParameter struct {
+	TokenId string `uri:"tokenid" binding:"required"`
+}
